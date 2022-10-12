@@ -42,13 +42,7 @@ if (anniUtente < 18){
 }
 
 
-const btnInput = document.getElementById('btn-input');
-btnInput.addEventListener('click', function(){
-  const name = prompt('Come ti chiami?')
-  console.log(name);
-  console.log(document.getElementById('input').value);
-  document.getElementById('input').value = name;
-});
+
 
 const btnInput2 = document.getElementById('btn-input2');
 btnInput2.addEventListener('click', function(){
