@@ -4,56 +4,64 @@
 const prezzoKm = 0.21;
 const scontoMinorenni = 0.2;
 const scontoOver = 0.4;
-const anniUtente = prompt('Buongiorno quanti anni ha?');
-const kmUtente = prompt('Quanti km vuole percorrere con il nostro treno?');
-let prezzo, prezzoRounded, msg;
+// const anniUtente = prompt('Buongiorno quanti anni ha?');
+// const kmUtente = prompt('Quanti km vuole percorrere con il nostro treno?');
 
-const prezzoBiglietto = kmUtente * prezzoKm;
 
-// BUSINESS LAYER
+const btnInput = document.getElementById('btn-input2');
+btnInput.addEventListener('click', function(){
 
-if (anniUtente < 18){
-    discountprice = prezzoBiglietto * (1- scontoMinorenni);
-    // sconto = prezzoBiglietto * scontoMinorenni;
+
+    const nome = document.getElementById('input-name-surname').value;
+    const distanza = document.getElementById('input-km-da-percorrere').value;
+    const eta = document.getElementById('eta-viaggiatore').value;
+
+
+    let prezzoRounded, discountprice, price;
+
+    const prezzoBiglietto = distanza * prezzoKm;
+
+    // BUSINESS LAYER
+
+    if (eta === "Minorenne"){
+        discountprice = prezzoBiglietto * (1- scontoMinorenni);
+        // sconto = prezzoBiglietto * scontoMinorenni;
+        
+        prezzoRounded = Math.round((discountprice + Number.EPSILON) * 100) /100;
+        document.getElementById('tipo-biglietto').innerHTML = 'sconto minorenni';
+        
+    }else if(eta === "Senior"){
+        discountprice = prezzoBiglietto * (1- scontoOver);
+        
+        prezzoRounded = Math.round((discountprice + Number.EPSILON) * 100) /100;
+        document.getElementById('tipo-biglietto').innerHTML = 'sconto Senior';
     
-    prezzoRounded = Math.round((discountprice + Number.EPSILON) * 100) /100;
-    msg = `Il tuo biglietto costa ${prezzoRounded}€`;
-    msg += `
-    <br>
-    Essendo minorenne ha lo sconto del ${scontoMinorenni * 100}% quindi paghi solo ${prezzoRounded}€
-    `;
-}else if(anniUtente > 65){
-    discountprice = prezzoBiglietto * (1- scontoOver);
-    
-    prezzoRounded = Math.round((discountprice + Number.EPSILON) * 100) /100;
-    msg = `Il tuo biglietto costa ${prezzoRounded}€`;
-    msg += `
-    <br>
-    Essendo senior ha lo sconto del ${scontoOver * 100}% quindi paghi solo ${prezzoRounded}€
-    `;
-}else{
-    discountprice = 0;
-    
-    price = prezzoBiglietto - discountprice;
-    prezzoRounded = Math.round((price + Number.EPSILON) * 100) /100;
-    msg = `Il tuo biglietto costa ${prezzoRounded}€`;55
-
-
-}
+    }else{
+        discountprice = 0;
+        
+        price = prezzoBiglietto - discountprice;
+        prezzoRounded = Math.round((price + Number.EPSILON) * 100) /100;
+        document.getElementById('tipo-biglietto').innerHTML = 'Biglietto Standard';
+    }
 
 
 
 
-const btnInput2 = document.getElementById('btn-input2');
-btnInput2.addEventListener('click', function(){
-  const name = document.getElementById('input2').value;
-  //alert('Nell\'input c\'è scritto: ' + name);
-  document.getElementById('output-name').innerHTML = name;
+
+    const name = document.getElementById('input-name-surname');
+    document.getElementById('output-name').innerHTML = nome;
+
+
+
+
+
+
+    document.getElementById('finalPrice').innerHTML = prezzoRounded
 
   //resetto i lvalue dell'input
-  document.getElementById('input2').value = '';
+//   document.getElementById('input2').value = '';
 });
 
 // PRESENTATION LAYER
 
-document.getElementById('output').innerHTML = msg;
+// document.getElementById('output').innerHTML = msg;

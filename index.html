@@ -18,14 +18,15 @@
             <div class="top row space-around">
                 <div class="name">
                     <span>Nome Cognome</span>
-                    <input id="input2" type="text" value="" placeholder="Nome e cognome">
+                    <input id="input-name-surname" type="text" value="" placeholder="Nome e cognome">
                 </div>
                 <div class="km">
                     <span>Km da percorrere</span>
-                    <input id="input2" type="number" value="" placeholder="Nome e cognome">
+                    <input id="input-km-da-percorrere" type="number" value="" placeholder="Nome e cognome">
                 </div>
                 <div class="eta">
-                    <select id="eta" name="eta">
+                    <span>Fasca d'età</span>
+                    <select id="eta-viaggiatore" name="eta">
                         <option value="Minorenne">Minorenne</option>
                         <option value="Adult">Adulto</option>
                         <option value="Senior">Senior</option>
@@ -49,16 +50,22 @@
                     <span>NOME PASSEGGERO</span>
                     <h4 id="output-name"></h4>
                 </div>
+
                 <div class="d-flex">
                     <div>
-                        <span>OFFERTACARROZZA</span>
+                        <span>OFFERTA</span>
+                        <p id="tipo-biglietto"></p>
+                    </div>
+                    <div>
+                        <span>CARROZZA</span>
                     </div>
                     <div>
                         <span>CODICE CP</span>
                     </div>
                     <div>
-                        <span>COSTO BIFLIETTO</span>
-                        <span id="output"></span>
+                        <span>COSTO BIGLIETTO</span>
+                        <span id="finalPrice"></span>
+                        
                     </div>
                     
                 </div>
